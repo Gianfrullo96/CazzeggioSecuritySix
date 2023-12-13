@@ -1,5 +1,7 @@
 package it.konvergence.myproject.domain;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * @author Gianluca Ferruzzi
  * @version 1.0
@@ -8,7 +10,7 @@ package it.konvergence.myproject.domain;
 public class CustomValidationException extends RuntimeException {
     private final String errorMessage;
 
-    public CustomValidationException(String errorMessage) {
+    public CustomValidationException(@NotNull("errorMessage was NUll") String errorMessage) {
         super("Validation error");
         this.errorMessage = errorMessage;
     }
