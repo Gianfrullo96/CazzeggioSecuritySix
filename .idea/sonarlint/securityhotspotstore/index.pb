@@ -19,3 +19,5 @@ G
 src/test/java/test.http,9/7/97a780358832c1275980f6f60a1a0952bf7d509a
 q
 Asrc/main/java/it/konvergence/myproject/config/SpringSecurity.java,3/c/3c2119979a70bdabf5b3ef3c693cbc233f6a3de6
+H
+CazzeggioSecuritySix.iml,f/1/f13e6a11031f6bf9330d55fd5a43632e3de9db71
