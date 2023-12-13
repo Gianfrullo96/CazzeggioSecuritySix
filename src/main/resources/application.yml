@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/cazzeggio_db
+    username: root
+    password: Password
+  jpa:
+    hibernate:
+      ddl-auto: update
+  security:
+    user:
+      name: utente
+      password: pwd
+
