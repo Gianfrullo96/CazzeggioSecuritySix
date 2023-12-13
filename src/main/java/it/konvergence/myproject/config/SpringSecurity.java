@@ -11,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  * @author Gianluca Ferruzzi
@@ -48,7 +47,7 @@ public class SpringSecurity {
         http
                 .csrf().disable()
                 .cors().and()
-                .authorizeHttpRequests((authz) -> authz
+                .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/save").hasRole("CAPTAIN")
                         .requestMatchers("/cards").hasRole("CREW")
                         .anyRequest().authenticated()
