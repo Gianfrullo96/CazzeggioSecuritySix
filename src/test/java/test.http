@@ -4,3 +4,21 @@ Authorization: Basic utente pwd
 
 ###
 
+# curl -i -X POST -H "Content-Type: application/json" -u utente:pwd -d '{"name": "Nome della carta"}' http://localhost:8080/save
+POST http://localhost:8080/save
+Authorization: Basic utente pwd
+Content-Type: application/json
+
+{
+  "name": "Nome della carta"
+}
+
+###
+
+# curl -i -X POST -H "Content-Type: application/json" -u utente:pwd -d '{"name": "Nome della carta"}' http://localhost:8080/save
+GET http://localhost:8080/cards
+Authorization: Basic utente pwd
+
+
+###
+
