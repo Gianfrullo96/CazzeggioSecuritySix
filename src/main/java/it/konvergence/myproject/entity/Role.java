@@ -1,5 +1,6 @@
 package it.konvergence.myproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "roles")
+
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +29,7 @@ public class Role {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "roles")
     private List<User> users;
 }

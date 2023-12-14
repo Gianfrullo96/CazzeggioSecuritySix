@@ -58,25 +58,17 @@ public class HomeController {
     }
 
     @PostMapping("/saveUser")
-    public User registration(@Valid @RequestBody UserDto userDto,
-                             @NotNull("result was null") BindingResult result
-    ) {
+    public User registration(@Valid @RequestBody UserDto userDto) {
         User existingUser = userService.findUserByEmail(userDto.getEmail());
 
         if (existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()) {
-            result.rejectValue("email", "myerrorcode",
-                    "There is already an account registered with the same email");
-        }
-
-        if (result.hasErrors()) {
-            throw new CustomValidationException("cazzato qualcosa");
+            throw new CustomValidationException("There is already an account registered with the same email");
         }
 
         return userService.saveUser(userDto);
-
     }
 
-        @GetMapping("/users")
+    @GetMapping("/users")
         public List<UserDto> users() {
             return userService.findAllUsers();
         }
