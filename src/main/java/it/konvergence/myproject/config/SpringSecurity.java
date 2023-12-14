@@ -1,15 +1,16 @@
 package it.konvergence.myproject.config;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 /**
@@ -20,27 +21,32 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SpringSecurity {
 
+
+    private final UserDetailsService userDetailsService;
+
+
     @Bean
-    public PasswordEncoder encoder(){
+    public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public InMemoryUserDetailsManager userDetailsService() {
-        UserDetails user1 = User.builder()
-                .username("mike")
-                .password(encoder().encode("important"))
-                .roles("CAPTAIN", "CREW")
-                .build();
-        UserDetails user2 = User.builder()
-                .username("henrik")
-                .password(encoder().encode("important"))
-                .roles("CREW")
-                .build();
-        return new InMemoryUserDetailsManager(user1, user2);
-    }
+//    @Bean
+//    public InMemoryUserDetailsManager userDetailsService() {
+//        UserDetails user1 = User.builder()
+//                .username("mike")
+//                .password(encoder().encode("important"))
+//                .roles("CAPTAIN", "CREW")
+//                .build();
+//        UserDetails user2 = User.builder()
+//                .username("henrik")
+//                .password(encoder().encode("important"))
+//                .roles("CREW")
+//                .build();
+//        return new InMemoryUserDetailsManager(user1, user2);
+//    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -50,9 +56,20 @@ public class SpringSecurity {
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/save").hasRole("CAPTAIN")
                         .requestMatchers("/cards").hasRole("CREW")
-                        .anyRequest().authenticated()
+                        .requestMatchers("/users").hasRole("CAPTAIN")
+                        .requestMatchers("/saveUser").permitAll()
+                        .requestMatchers("/arealo").permitAll()
+                        .anyRequest().permitAll()
+
                 )
                 .httpBasic(Customizer.withDefaults());
         return http.build();
+    }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder());
     }
 }

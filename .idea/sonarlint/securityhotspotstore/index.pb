@@ -35,8 +35,6 @@ o
 ?src/main/java/it/konvergence/myproject/repo/UserRepository.java,7/b/7b4d11a59af237c040e67b3c27b75f381d3cd054
 o
 ?src/main/java/it/konvergence/myproject/repo/RoleRepository.java,1/b/1bcffebe61f8716ebdd6466c2f0043835fdf146f
-v
-Fsrc/main/java/it/konvergence/myproject/domain/ValidationException.java,a/5/a5270d8d0e48d007f1c10b256fe0e53756a7c370
 |
 Lsrc/main/java/it/konvergence/myproject/domain/CustomValidationException.java,8/1/81ed95b50ba1492c433d9cba4e3d108a4e616d62
 S

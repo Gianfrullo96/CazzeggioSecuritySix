@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
-        Role role = roleRepository.findByName("ROLE_ADMIN");
+        Role role = roleRepository.findByName("CAPTAIN");
         if (role == null) {
             role = checkRoleExist();
         }
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
 
     private Role checkRoleExist() {
         Role role = new Role();
-        role.setName("ROLE_ADMIN");
+        role.setName("CAPTAIN");
         return roleRepository.save(role);
     }
 
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
     public List<UserDto> findAllUsers() {
         List<User> users = userRepository.findAll();
         return users.stream().map(this::convertEntityToDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private UserDto convertEntityToDto(@NotNull("user was NULL")User user) {

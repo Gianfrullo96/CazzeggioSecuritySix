@@ -12,7 +12,7 @@ Authorization: Basic mike important
 Content-Type: application/json
 
 {
-  "name": "Nome della carta"
+  "name": "Maelstrom Wanderer"
 }
 ###
 
@@ -22,4 +22,42 @@ GET http://localhost:8080/
 Authorization: Basic henrik important
 
 ###
+
+# curl -i -X GET http://localhost:8080/users
+GET http://localhost:8080/users
+
+###
+
+# curl -i -X GET http://localhost:8080/arealo
+GET http://localhost:8080/arealo
+
+###
+
+
+# curl -X POST -H "Content-Type: application/json" -d '{
+#  "firstName": "John",
+#  "lastName": "Doe",
+#  "email": "john.doe@example.com",
+#  "password": "secretpassword"
+#}' http://localhost:8080/saveUser
+POST http://localhost:8080/saveUser
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@example.com",
+  "password": "secretpassword"
+}
+
+###
+
+# curl -X GET -u john.doe@example.com:secretpassword http://localhost:8080/users
+GET http://localhost:8080/users
+Authorization: Basic john.doe@example.com secretpassword
+
+###
+
+
+
 

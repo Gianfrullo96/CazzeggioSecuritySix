@@ -8,6 +8,7 @@ import it.konvergence.myproject.service.CardService;
 import it.konvergence.myproject.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -39,6 +40,11 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/arealo")
+    public String arealoProtected() {
+        return "arealoProtected";
+    }
+
     @PostMapping("/save")
     public ResponseEntity<Card> saveCard(@Valid @RequestBody Card card) {
         Card savedCard = cardService.saveCard(card);
@@ -53,12 +59,12 @@ public class HomeController {
 
     @PostMapping("/saveUser")
     public User registration(@Valid @RequestBody UserDto userDto,
-                             BindingResult result
+                             @NotNull("result was null") BindingResult result
     ) {
         User existingUser = userService.findUserByEmail(userDto.getEmail());
 
         if (existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()) {
-            result.rejectValue("email", null,
+            result.rejectValue("email", "myerrorcode",
                     "There is already an account registered with the same email");
         }
 
@@ -70,10 +76,10 @@ public class HomeController {
 
     }
 
-    @GetMapping("/users")
-    public List<UserDto> users() {
-        return userService.findAllUsers();
-    }
+        @GetMapping("/users")
+        public List<UserDto> users() {
+            return userService.findAllUsers();
+        }
 
 
 }
