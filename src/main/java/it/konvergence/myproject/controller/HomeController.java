@@ -8,10 +8,8 @@ import it.konvergence.myproject.service.CardService;
 import it.konvergence.myproject.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -69,9 +67,9 @@ public class HomeController {
     }
 
     @GetMapping("/users")
-        public List<UserDto> users() {
-            return userService.findAllUsers();
-        }
+    public List<UserDto> users() {
+        return userService.findAllUsers();
+    }
 
 
 }

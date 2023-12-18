@@ -46,7 +46,7 @@ Content-Type: application/json
 {
   "firstName": "John",
   "lastName": "Doe",
-  "email": "marcia.dante@example.com",
+  "email": "pera.dante@example.com",
   "password": "secretpassword"
 }
 
@@ -57,6 +57,13 @@ GET http://localhost:8080/users
 Authorization: Basic john.doe@example.com secretpassword
 
 ###
+# curl -u marcia.dante@example.com:secretpassword http://localhost:8080/users
+GET http://localhost:8080/users
+Authorization: Basic pera.dante@example.com secretpassword
+
+###
+
+
 
 
 
