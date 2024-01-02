@@ -59,6 +59,7 @@
             http
                     .csrf().disable()
                     .cors().and()
+                    .httpBasic(Customizer.withDefaults())
                     .authorizeHttpRequests(authz -> authz
                             .requestMatchers("/save").hasRole("CAPTAIN")
                             .requestMatchers("/cards").hasRole("CREW")
@@ -67,10 +68,13 @@
                             .requestMatchers("/arealo").permitAll()
                     )
                     .formLogin(Customizer.withDefaults())
-                    .httpBasic(Customizer.withDefaults())
+
                     .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
             return http.build();
+
+
+
         }
 
         @Autowired
