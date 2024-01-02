@@ -31,7 +31,7 @@ Content-Type: application/json
 }
 
 ###
-
+#are
 # curl -X POST -H "Content-Type: application/json" -d '{"name": "CardName"}' http://localhost:8080/save
 POST http://localhost:8080/save
 Authorization: Basic cameraten@example.com secretpassword

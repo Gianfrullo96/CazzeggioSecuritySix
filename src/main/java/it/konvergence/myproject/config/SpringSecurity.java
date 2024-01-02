@@ -61,14 +61,15 @@
                     .cors().and()
                     .httpBasic(Customizer.withDefaults())
                     .authorizeHttpRequests(authz -> authz
+                            .requestMatchers("/saveUser").permitAll()
+                            .requestMatchers("/arealo").permitAll()
                             .requestMatchers("/save").hasRole("CAPTAIN")
                             .requestMatchers("/cards").hasRole("CREW")
                             .requestMatchers("/users").hasRole("CAPTAIN")
-                            .requestMatchers("/saveUser").permitAll()
-                            .requestMatchers("/arealo").permitAll()
-                    )
-                    .formLogin(Customizer.withDefaults())
 
+                    )
+
+                    .formLogin(Customizer.withDefaults())
                     .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
             return http.build();

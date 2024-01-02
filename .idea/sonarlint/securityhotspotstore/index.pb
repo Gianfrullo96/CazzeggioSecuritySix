@@ -27,3 +27,11 @@ k
 ;src/main/java/it/konvergence/myproject/request/UserDto.java,5/0/50005fa6d467b5f3b2a325d35797453ed1ae597e
 o
 ?src/main/java/it/konvergence/myproject/repo/UserRepository.java,7/b/7b4d11a59af237c040e67b3c27b75f381d3cd054
+g
+7src/main/java/it/konvergence/myproject/entity/Role.java,a/a/aa7ff981623ea434e35f4dafe0983a14600a856f
+g
+7src/main/java/it/konvergence/myproject/entity/User.java,6/2/622dc25e348c35d590d65debf8e56ab33afe23d3
+o
+?src/main/java/it/konvergence/myproject/repo/RoleRepository.java,1/b/1bcffebe61f8716ebdd6466c2f0043835fdf146f
+o
+?src/main/java/it/konvergence/myproject/service/CardService.java,6/a/6aef33810eb61aaba2e6713a0ca3097e5ea573bb

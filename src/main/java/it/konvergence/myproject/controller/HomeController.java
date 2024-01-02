@@ -57,6 +57,7 @@ public class HomeController {
 
     @PostMapping("/saveUser")
     public User registration(@Valid @RequestBody UserDto userDto) {
+
         User existingUser = userService.findUserByEmail(userDto.getEmail());
 
         if (existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()) {
