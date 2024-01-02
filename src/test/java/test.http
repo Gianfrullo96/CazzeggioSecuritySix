@@ -1,33 +1,51 @@
 
-# curl -i -X POST -H "Content-Type: application/json" -u utente:pwd -d '{"name": "Nome della carta"}' http://localhost:8080/save
-GET http://localhost:8080/cards
-Authorization: Basic mike important
 
-
-###
-
-# curl -i -u mike:important http://localhost:8080/
-POST http://localhost:8080/save
-Authorization: Basic mike important
-Content-Type: application/json
-
-{
-  "name": "Nome della carta"
-}
-###
-
-
-# curl -i -u henrik:important http://localhost:8080/cantina/menu/today
-GET http://localhost:8080/
-Authorization: Basic henrik important
+#chiamata semplice non protetta
+# curl -i http://localhost:8080/arealo
+GET http://localhost:8080/arealo
 
 ###
 
-
-# curl -u cameraten@example.com:password http://localhost:8080/users
+# curl -i -u cameraten@example.com:secretpassword http://localhost:8080/users
 GET http://localhost:8080/users
 Authorization: Basic cameraten@example.com secretpassword
 
 ###
+# curl -i -u cameraten@example.com:secretpassword http://localhost:8080/users
+GET http://localhost:8080/users
+Authorization: Basic marcobona@example.com mysecretpwd
+
+###
+
+
+# curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -d '{"firstName": "Mario", "lastName": "Cario", "email": "marioCario@example.com", "password": "mysecretpwd"}' http://localhost:8080/saveUser
+POST http://localhost:8080/saveUser
+Accept: application/json
+Content-Type: application/json
+
+{
+  "firstName": "Marco",
+  "lastName": "Bona",
+  "email": "marcobona@example.com",
+  "password": "mysecretpwd"
+}
+
+###
+
+# curl -X POST -H "Content-Type: application/json" -d '{"name": "CardName"}' http://localhost:8080/save
+POST http://localhost:8080/save
+Authorization: Basic cameraten@example.com secretpassword
+Content-Type: application/json
+
+{
+  "name": "Mulldrotha"
+}
+
+###
+
+
+
+
+
 
 
